@@ -4,8 +4,8 @@ require 'functions.php';
 require 'Client.php';
 
 $query = trim ( $argv [1] );
-$client = new Google\Maps\Client ();
 $workflow = new Workflows ();
+$client = new Google\Maps\Client ();
 try {
 	$params = [ 
 			'language' => 'zh-CN' 
@@ -20,7 +20,9 @@ try {
 		$workflow->result ( 'alfredworkflow_404', $result ['status'], $result ['status'], 'No response, try again!', 'icon.png' );
 	} else {
 		foreach ( $result ['results'] as $address ) {
-			$workflow->result ( $address ['place_id'], $address ['formatted_address'], $address ['formatted_address'], $address ['formatted_address'], 'icon.png' );
+			$address_location = $address ['geometry'] ['location'];
+			$latlng = $address_location ['lat'] . ',' . $address_location ['lng'];
+			$workflow->result ( $address ['place_id'], $latlng, $address ['formatted_address'], $query, 'icon.png' );
 		}
 	}
 } catch ( Exception $e ) {
