@@ -15,22 +15,23 @@ try {
 	}
 	$result = $place_client->default ( $params );
 	if (! $result || $result ['status'] != 0) {
-		$workflow->result ( $result ['status'], 'No match place!', $result ['message'], 'No response, try again!', 'icon.png' );
+		$workflow->result ( $result ['status'], '找不到地址!', $result ['message'], '找不到相应的地址，请重试!', 'icon/baidu.png' );
 	} else {
 		$result = $result ['result'];
 		if (isset ( $result ['business'] ) && $result ['formatted_address'] && isset ( $result ['addressComponent'] )) {
-			$workflow->result ( $query, $result ['business'], $result ['formatted_address'], $query, 'icon.png' );
+			$workflow->result ( $query, $result ['business'], $result ['formatted_address'], $query, 'icon/baidu.png' );
 			foreach ( $result ['addressComponent'] as $key => $value ) {
 				if (empty ( $value ))
 					continue;
-				$workflow->result ( $key . ':' . $value, $value, $value, $key, 'icon.png' );
+				$workflow->result ( $key . ':' . $value, $value, $value, $key, 'icon/baidu.png' );
 			}
 		} elseif (isset ( $result ['location'] )) {
-			$workflow->result ( $query, $result ['location'] ['lat'] . ',' . $result ['location'] ['lng'], $result ['location'] ['lat'] . ',' . $result ['location'] ['lng'], $result ['level'], 'icon.png' );
+			$latlng = $result ['location'] ['lat'] . ',' . $result ['location'] ['lng'];
+			$workflow->result ( $query, $latlng, $latlng, $result ['level'], 'icon/baidu.png' );
 		}
 	}
 } catch ( Exception $e ) {
-	$workflow->result ( 'alfredworkflow_500', 'Please make sure your internet works well.', 'No response, try again!', 'Please make sure your internet works well.', 'icon.png' );
+	$workflow->result ( 'alfredworkflow_500', '程序出错.', '请求失败!', '请求失败!', 'icon/baidu.png' );
 }
 
 print $workflow->toxml ();
