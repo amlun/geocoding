@@ -3,9 +3,9 @@ require 'workflow.php';
 require 'functions.php';
 require 'BaiduMapClient.php';
 
-$query = trim ( $argv [1] );
+isset ( $argv [1] ) && $query = trim ( $argv [1] );
 $workflow = new Workflows ();
-$baidu_map_api_key = $workflow->read ( 'baidu_map_api_key' );
+$baidu_map_api_key = $workflow->read ( BaiduMapClient::APIKEY );
 $place_client = BaiduMapClient::instance ( 'geocoder', $baidu_map_api_key ); // 'EBfee57431c42ec5925b2e9e32c5313b'
 try {
 	if (is_geo ( $query )) {

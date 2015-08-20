@@ -7,6 +7,7 @@
  */
 class GoogleMapClient {
 	const END_POINT = 'https://maps.googleapis.com/maps/api/';
+	const APIKEY = 'google_map_api_key';
 	private $_key = null;
 	/**
 	 * set api key

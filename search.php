@@ -3,9 +3,9 @@ require 'workflow.php';
 require 'functions.php';
 require 'GoogleMapClient.php';
 
-$query = trim ( $argv [1] );
+isset ( $argv [1] ) && $query = trim ( $argv [1] );
 $workflow = new Workflows ();
-$google_map_api_key = $workflow->read ( 'google_map_api_key' );
+$google_map_api_key = $workflow->read ( GoogleMapClient::APIKEY );
 $client = new GoogleMapClient ( $google_map_api_key );
 try {
 	if (is_geo ( $query )) {

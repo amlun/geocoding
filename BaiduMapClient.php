@@ -8,6 +8,7 @@
 class BaiduMapClient {
 	const END_POINT = 'http://api.map.baidu.com/';
 	const VERSION = 'v2';
+	const APIKEY = 'baidu_map_api_key';
 	private static $_services = [ 
 			'place',
 			'geocoder' 
