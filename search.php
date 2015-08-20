@@ -1,7 +1,7 @@
 <?php
 require 'workflow.php';
 require 'functions.php';
-require 'Client.php';
+require 'GoogleMapClient.php';
 
 $query = trim ( $argv [1] );
 $workflow = new Workflows ();

@@ -1,14 +1,11 @@
 <?php
-
-namespace Google\Maps;
-
 /**
  * GoogleMapsClient
  *
  * @author lunweiwei
  *        
  */
-class Client {
+class GoogleMapClient {
 	const END_POINT = 'https://maps.googleapis.com/maps/api/';
 	private $_key = null;
 	/**
