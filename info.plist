@@ -8,11 +8,52 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
+		<key>00EA07C6-1C62-40E3-A972-40F51D2A431C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F8E19F6D-C3CB-4B8E-8A43-14C22693EC82</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>1C0152FD-1D9B-49F5-A3D4-FA22C4C49F08</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>98A1F7F6-B76A-4E83-A6D7-E724C016BCAA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>6306C826-633D-4794-992B-557DEEC27B4A</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>DCEC8C17-4D4A-4668-BA45-8E3D96774807</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F8E19F6D-C3CB-4B8E-8A43-14C22693EC82</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>D46E0684-429D-4D8F-A03A-5A797BAF70CA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>38B6E157-D9AF-4878-A37C-363C77E75A0C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -84,20 +125,182 @@
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>F8E19F6D-C3CB-4B8E-8A43-14C22693EC82</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>bm</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>输入地址或经纬度</string>
+				<key>script</key>
+				<string>php -f query.php "{query}"</string>
+				<key>subtext</key>
+				<string>百度地图服务</string>
+				<key>title</key>
+				<string>百度地图服务</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>00EA07C6-1C62-40E3-A972-40F51D2A431C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>php -f bmactive.php "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>98A1F7F6-B76A-4E83-A6D7-E724C016BCAA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>bmak</string>
+				<key>subtext</key>
+				<string>请输入百度地图APIKEY</string>
+				<key>text</key>
+				<string>请输入百度地图APIKEY</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>1C0152FD-1D9B-49F5-A3D4-FA22C4C49F08</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>php -f geoactive.php "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>38B6E157-D9AF-4878-A37C-363C77E75A0C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>geoak</string>
+				<key>subtext</key>
+				<string>input the google api key</string>
+				<key>text</key>
+				<string>input the google api key</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D46E0684-429D-4D8F-A03A-5A797BAF70CA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Geocoding is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA") into geographic coordinates (like latitude 37.423021 and longitude -122.083739), which you can use to place markers on a map, or position the map.</string>
 	<key>uidata</key>
 	<dict>
+		<key>00EA07C6-1C62-40E3-A972-40F51D2A431C</key>
+		<dict>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>1C0152FD-1D9B-49F5-A3D4-FA22C4C49F08</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>38B6E157-D9AF-4878-A37C-363C77E75A0C</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
 		<key>6306C826-633D-4794-992B-557DEEC27B4A</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
 		</dict>
+		<key>98A1F7F6-B76A-4E83-A6D7-E724C016BCAA</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>D46E0684-429D-4D8F-A03A-5A797BAF70CA</key>
+		<dict>
+			<key>ypos</key>
+			<real>490</real>
+		</dict>
 		<key>DCEC8C17-4D4A-4668-BA45-8E3D96774807</key>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
+		</dict>
+		<key>F8E19F6D-C3CB-4B8E-8A43-14C22693EC82</key>
+		<dict>
+			<key>ypos</key>
+			<real>240</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

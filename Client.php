@@ -10,7 +10,6 @@ namespace Google\Maps;
  */
 class Client {
 	const END_POINT = 'https://maps.googleapis.com/maps/api/';
-	const DEFAULT_LANG = 'zh-CN';
 	private $_key = null;
 	/**
 	 * set api key
@@ -44,7 +43,6 @@ class Client {
 	 */
 	public function _get($uri, $params = array()) {
 		! empty ( $this->_key ) && $params ['key'] = $this->_key;
-		isset ( $params ['language'] ) or $params ['language'] = self::DEFAULT_LANG;
 		$url = self::END_POINT . $uri . '?' . http_build_query ( $params );
 		$ch = curl_init ();
 		curl_setopt ( $ch, CURLOPT_URL, $url );
@@ -56,48 +54,5 @@ class Client {
 		$httpcode = curl_getinfo ( $ch, CURLINFO_HTTP_CODE );
 		curl_close ( $ch );
 		return ($httpcode >= 200 && $httpcode < 300) ? $data : false;
-	}
-	/**
-	 * Validates latitude
-	 *
-	 * @param mixed $latitude        	
-	 *
-	 * @return bool
-	 */
-	public function isValidLatitude($latitude) {
-		return $this->isNumericInBounds ( $latitude, - 90.0, 90.0 );
-	}
-	
-	/**
-	 * Validates longitude
-	 *
-	 * @param mixed $longitude        	
-	 *
-	 * @return bool
-	 */
-	public function isValidLongitude($longitude) {
-		return $this->isNumericInBounds ( $longitude, - 180.0, 180.0 );
-	}
-	
-	/**
-	 * Checks if the given value is (1) numeric, and (2) between lower
-	 * and upper bounds (including the bounds values).
-	 *
-	 * @param float $value        	
-	 * @param float $lower        	
-	 * @param float $upper        	
-	 *
-	 * @return bool
-	 */
-	public function isNumericInBounds($value, $lower, $upper) {
-		if (! is_numeric ( $value )) {
-			return false;
-		}
-		
-		if ($value < $lower || $value > $upper) {
-			return false;
-		}
-		
-		return true;
 	}
 }

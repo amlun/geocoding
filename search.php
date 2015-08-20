@@ -5,7 +5,8 @@ require 'Client.php';
 
 $query = trim ( $argv [1] );
 $workflow = new Workflows ();
-$client = new Google\Maps\Client ();
+$google_map_api_key = $workflow->read ( 'google_map_api_key' );
+$client = new Google\Maps\Client ( $google_map_api_key );
 try {
 	$params = [ 
 			'language' => 'zh-CN' 
